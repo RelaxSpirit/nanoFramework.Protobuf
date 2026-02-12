@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ProtoArrayElementAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dto\MemberMapping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dto\MemberPropertyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IAmASerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStream.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serializer.cs" />

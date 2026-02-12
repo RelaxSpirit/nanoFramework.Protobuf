@@ -80,7 +80,7 @@ namespace nanoFramework.Protobuf
 
             if (type.IsArray)
             {
-                WriteArray(stream, (object[])obj, memberType);
+                WriteArray(stream, (Array)obj, memberType);
                 return;
             }
 

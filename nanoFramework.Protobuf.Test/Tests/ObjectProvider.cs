@@ -24,7 +24,9 @@ namespace nanoFramework.Protobuf.Test
                     StringProperty = "ghi",
                     IntProperty = 789,
                     DerivedProperty = true
-                }
+                },
+                AbstractProperty = "Test abstract",
+                ArrayProperty = new long[] { 1, 2, 3, 4, 5, long.MaxValue}
             };
         }
 

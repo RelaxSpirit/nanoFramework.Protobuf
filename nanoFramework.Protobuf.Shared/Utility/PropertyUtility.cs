@@ -44,9 +44,11 @@ namespace nanoFramework.Protobuf.Utility
         {
             if (type == null) return;
 
-            //NanoTODO #1
-            //var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-            var properties = new PropertyInfo[0];
+#if NANOFRAMEWORK_1_0
+            var properties = MemberPropertyInfo.GetProperties(type, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+#else
+            var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+#endif
 
             foreach (var property in properties)
                 if (property.DeclaringType == type) //skip properties not declared on type, we will find it in a later recursion

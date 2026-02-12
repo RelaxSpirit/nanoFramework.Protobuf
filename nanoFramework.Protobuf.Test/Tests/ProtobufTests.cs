@@ -93,6 +93,10 @@ namespace nanoFramework.Protobuf.Test
             Debug.Assert(derivedObject.DerivedChildObject.StringProperty == "ghi");
             Debug.Assert(derivedObject.DerivedChildObject.IntProperty == 789);
             Debug.Assert(derivedObject.DerivedChildObject.DerivedProperty);
+
+            Debug.Assert(derivedObject.AbstractProperty == "Test abstract");
+            Debug.Assert(derivedObject.VirtualProperty == "I'm override base virtual property");
+            Debug.Assert(derivedObject.ArrayProperty.Length == 6);
         }
     }
 }

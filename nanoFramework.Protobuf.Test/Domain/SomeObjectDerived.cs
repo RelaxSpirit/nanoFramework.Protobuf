@@ -9,5 +9,22 @@ namespace nanoFramework.Protobuf.Test.Domain
     {
         [ProtoMember(3)]
         public bool DerivedProperty;
+
+        public override string AbstractProperty { get; set; } = string.Empty;
+
+        public override string VirtualProperty { get; set; } = "I'm override base virtual property";
+#if !NANOFRAMEWORK_1_0
+        [ProtoMember(4)]
+        [ProtoArrayElement("System.Int64")]
+        public long[] ArrayProperty { get; set; } = new long[0];
+#else
+        public long[] ArrayProperty
+        {
+            [ProtoMember(4)]
+            [ProtoArrayElement("System.Int64")]
+            get;
+            set;
+        } = new long[0];
+#endif
     }
 }

@@ -88,7 +88,11 @@ namespace nanoFramework.Protobuf
                 {
                     var memberType = mapping.GetMemberType();
                     var val = ReadFromStream(stream, memberType, current, mappings);
-                    val = Convert(val, memberType);
+                    if (!mapping.IaArray)
+                    {
+                        val = Convert(val, memberType);
+                    }
+
                     mapping.SetValue(current, val);
                     processed = true;
                     break;
@@ -115,19 +119,31 @@ namespace nanoFramework.Protobuf
 
             if (targetType == typeof(long))
             {
-                if (obj is long || obj is int || obj is short || obj is byte) return (long)obj;
+                if(obj is long longValue)
+                {
+                    return longValue;
+                }
+
                 return long.Parse(obj.ToString());
             }
 
             if (targetType == typeof(int))
             {
-                if (obj is int || obj is short || obj is byte) return (int)obj;
+               if(obj is int intValue)
+                {
+                    return intValue;
+                }
+
                 return int.Parse(obj.ToString());
             }
 
             if (targetType == typeof(short))
             {
-                if (obj is short || obj is byte) return (short)obj;
+                if(obj is short shortValue)
+                {
+                    return shortValue;
+                }
+
                 return short.Parse(obj.ToString());
             }
 
@@ -237,17 +253,17 @@ namespace nanoFramework.Protobuf
             return constructor.Invoke(null);
         }
 
-        private static object ReadArray(IStream stream, int len, Type targetType, object current, MemberMapping[] mappings)
+        private static Array ReadArray(IStream stream, int len, Type targetElementType, object current, MemberMapping[] mappings)
         {
-            var array = new ArrayList
+            Array targetArray = Array.CreateInstance(targetElementType, len);
+            IList listTargetArray = targetArray;
+
+            for (int i = 0; i < len; i++)
             {
-                Capacity = len
-            };
+                listTargetArray[i] = Convert(ReadFromStream(stream, targetElementType, current, mappings), targetElementType);
+            }
 
-            for (var i = 0; i < len; i++)
-                array.Add(ReadFromStream(stream, targetType, current, mappings));
-
-            return array.ToArray(targetType);
+            return targetArray;
         }
     }
 }

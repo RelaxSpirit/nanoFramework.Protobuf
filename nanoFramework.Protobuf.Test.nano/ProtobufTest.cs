@@ -1,6 +1,7 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System;
 using nanoFramework.TestFramework;
 
 namespace nanoFramework.Protobuf.Test.Net
@@ -17,7 +18,7 @@ namespace nanoFramework.Protobuf.Test.Net
         [TestMethod]
         public void BigStringTest()
         {
-            ProtobufTests.BigStringTest();
+            Assert.ThrowsException(typeof(ArgumentOutOfRangeException), () => ProtobufTests.BigStringTest());
         }
     }
 }

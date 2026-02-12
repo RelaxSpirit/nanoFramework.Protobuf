@@ -5,7 +5,7 @@ namespace nanoFramework.Protobuf.Test.Domain
 {
     [ProtoContract]
     [ProtoInclude("nanoFramework.Protobuf.Test.Domain.SomeObjectDerived, nanoFramework.Protobuf.Test", 10)]
-    public class SomeObject
+    public class SomeObject : AbstractSomeObject
     {
         [ProtoMember(1)]
         public string StringProperty;
@@ -18,5 +18,17 @@ namespace nanoFramework.Protobuf.Test.Domain
 
         [ProtoMember(20)]
         public SomeChildObjectDerived DerivedChildObject;
+
+#if !NANOFRAMEWORK_1_0
+        [ProtoMember(3)]
+        public override string AbstractProperty { get; set; } = "Override SomeObject";
+
+        [ProtoMember(4)]
+        public virtual string VirtualProperty { get; set; } = "I'm base virtual property";
+#else
+        public override string AbstractProperty { [ProtoMember(3)] get; [ProtoMember(3)] set; } = "Override SomeObject";
+
+        public virtual string VirtualProperty { [ProtoMember(4)] get; [ProtoMember(4)] set; } = "I'm base virtual property";
+#endif
     }
 }

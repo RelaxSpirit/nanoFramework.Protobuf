@@ -9,6 +9,7 @@
     <Import_RootNamespace>nanoFramework.Protobuf.Test</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Domain\AbstractSomeObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\SomeChildObjectDerived.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\SomeChildObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Domain\SomeObjectDerived.cs" />

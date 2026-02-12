@@ -26,6 +26,8 @@ namespace nanoFramework.Protobuf.Dto
         public string Name => Field?.Name ?? Property?.Name;
         public Type DeclaringType => Field?.DeclaringType ?? Property?.DeclaringType;
 
+        public bool IaArray => Field != null ? Field.FieldType.IsArray : Property.PropertyType.IsArray;
+
         public Type GetMemberType()
         {
             if (Field != null && Field.FieldType.IsArray) return GetArrayElement(Field);
@@ -87,7 +89,7 @@ namespace nanoFramework.Protobuf.Dto
 
             var result = Type.GetType(protoArrayElement.ArrayElementType);
 
-            ArrayElementDictionary.Add(member, result);
+            ArrayElementDictionary[member] = result;
 
             return result;
         }
