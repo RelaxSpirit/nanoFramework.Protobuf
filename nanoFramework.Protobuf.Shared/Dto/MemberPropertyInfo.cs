@@ -96,7 +96,7 @@ namespace nanoFramework.Protobuf.Dto
                 return false;
             }
 
-            // Ignore abstract and virtual objects
+            // Ignore abstract
             if (method.IsAbstract)
             {
                 return false;
