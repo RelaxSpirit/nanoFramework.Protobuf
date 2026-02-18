@@ -119,7 +119,7 @@ namespace nanoFramework.Protobuf
 
             if (targetType == typeof(long))
             {
-                if(obj is long longValue)
+                if (obj is long longValue)
                 {
                     return longValue;
                 }
@@ -129,7 +129,7 @@ namespace nanoFramework.Protobuf
 
             if (targetType == typeof(int))
             {
-               if(obj is int intValue)
+                if (obj is int intValue)
                 {
                     return intValue;
                 }
@@ -139,7 +139,7 @@ namespace nanoFramework.Protobuf
 
             if (targetType == typeof(short))
             {
-                if(obj is short shortValue)
+                if (obj is short shortValue)
                 {
                     return shortValue;
                 }
