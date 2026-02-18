@@ -5,10 +5,6 @@ namespace nanoFramework.Protobuf.Test.Domain
 {
     public abstract class AbstractSomeObject
     {
-#if !NANOFRAMEWORK_1_0
         public abstract string AbstractProperty { get; set; }
-#else
-        public abstract string AbstractProperty { get; set; }
-#endif
     }
 }
