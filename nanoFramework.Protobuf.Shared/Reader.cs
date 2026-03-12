@@ -88,7 +88,7 @@ namespace nanoFramework.Protobuf
                 {
                     var memberType = mapping.GetMemberType();
                     var val = ReadFromStream(stream, memberType, current, mappings);
-                    if (!mapping.IaArray)
+                    if (!mapping.IsArray)
                     {
                         val = Convert(val, memberType);
                     }
